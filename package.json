@@ -1,9 +1,9 @@
 {
-  "name": "firefox-word-later",
-  "title": "firefox-word-later",
+  "name": "word-later",
+  "title": "word-later",
   "id": "jid1-9QAjWPCl4e2Ylg",
-  "description": "a basic add-on",
-  "author": "",
-  "license": "MPL 2.0",
+  "description": "pick up words and list them later",
+  "author": "notetau",
+  "license": "MIT License",
   "version": "0.1"
 }
