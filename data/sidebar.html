@@ -4,7 +4,6 @@
 	<meta charset="utf-8" />
 	<script type='text/javascript' src='knockout-3.2.0.js'></script>
 	<script>
-		//
 	var test_model =
 		[
 			{word:"*********", url:"https://example.com", date:new Date().toISOString()},
@@ -97,12 +96,3 @@
 
 </body>
 </html>
-
-<!--
-	function select_text(target) {
-		var range = document.createRange();
-		range.selectNodeContents(target);
-		window.getSelection().addRange(range);
-	}
-	<div class="word_col" data-bind="text: word" onclick="select_text(this);"></div>
--->
