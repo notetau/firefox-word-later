@@ -24,21 +24,32 @@
 			{word:"wqwezdsf feafe", url:"https://dammy.com/", date:new Date().toISOString()},
 		];
 
+	function ViewModel(model) {
+		var self = this;
+		self.words = ko.observableArray(model);
+		self.completeWord = function(w) {
+			self.words.remove(w);
+		};
+		self.completeAllWords = function() {
+			self.words.removeAll();
+		};
+	}
+
 	window.onload = function() {
-		function ViewModel(model) {
-			var self = this;
-			self.words = ko.observableArray(model);
-			self.completeWord = function(w) {
-				self.words.remove(w);
-			};
-			self.completeAllWords = function() {
-				self.words.removeAll();
-			};
-		}
 		console.log("window onloads");
+
 		ko.applyBindings(new ViewModel(test_model));
 	};
 
+	addon.port.on("ping", function() {
+		console.log("sidebar script got the message");
+		addon.port.emit("pong");
+	});
+
+	addon.port.on("load", function(data) {
+		var model = JSON.parse(data);
+		ko.applyBindings(new ViewModel(model));
+	});
 	</script>
 	<style>
 		img div {
