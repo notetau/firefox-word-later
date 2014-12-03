@@ -40,16 +40,6 @@
 
 		ko.applyBindings(new ViewModel(test_model));
 	};
-
-	addon.port.on("ping", function() {
-		console.log("sidebar script got the message");
-		addon.port.emit("pong");
-	});
-
-	addon.port.on("load", function(data) {
-		var model = JSON.parse(data);
-		ko.applyBindings(new ViewModel(model));
-	});
 	</script>
 	<style>
 		img div {
