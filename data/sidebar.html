@@ -50,6 +50,14 @@
 			width: 100%;
 			margin:0px;
 			padding:0px;
+			margin-bottom: 20px;
+			background-color:#f7f7f7;
+		}
+		hr {
+			border: 0;
+			height: 0;
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 		}
 		.table_row {
 			width:100%;
@@ -57,10 +65,14 @@
 			margin-top: 3px;
 			margin-bottom: 3px;
 		}
+		.table_row_even {
+			background-color: #ABC3EF;
+		}
+
 		.word_col {
 			width: calc(100% - 40px);
 			display:table-cell;
-			background-color:#cff;
+			//background-color:#D4A8D7;
 
 			word-break:break-all;
 			//word-wrap: break-word;
@@ -68,32 +80,80 @@
 			vertical-align: middle;
 
 			padding: 2px;
+			padding-left: 10px;
 		}
 		.del_col {
 			width: 32px;
 			display:table-cell;
-			background-color:#fcf;
-
 			vertical-align: middle;
-
-			cursor: pointer;
 			padding: 4px;
+		}
+		.del_icon {
+			vertical-align: middle;
+			cursor: pointer;
+			background-color: #FAA60B;
+			min-width: 32px;
+			min-height: 32px;
+			//border-radius: 4px 4px 4px 4px;
+		}
+		.cross {
+			width: 20px;
+			height: 4px;
+			background-color: #fee;
+			transform: translateX(6px) translateY(14px) rotate(45deg);
+		}
+		.cross:after {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-color: inherit;
+			transform: rotate(90deg) ;
+		}
+		.del_icon:hover>.cross {
+			background-color: #f11;
+		}
+
+		#clear_all_button {
+
+			background-color: #FAA60B;
+			color: #eee;
+			font-weight: bold;
+			cursor: pointer;
+			margin-left: 40px;
+			padding: 4px;
+		}
+		#clear_all_button:hover {
+			background-color: #FFBA3A;
+			margin-left: 30px;
 		}
 	</style>
 </head>
 <body>
 <div style="padding:1px;">
 	<!-- ko foreach: words -->
-	<div class="table_row">
+	<div class="table_row"
+	     data-bind="css: { table_row_even: ($index() % 2 === 1) }">
 		<div class="word_col" data-bind="text: word"></div>
 		<div class="del_col">
-			<img style="vertical-align: middle;" src="icon-32.png"
-				data-bind="click: $root.completeWord"/>
+			<div class="del_icon" data-bind="click: $root.completeWord">
+				<div class="cross"></div>
+			</div>
 		</div>
 	</div>
 	<!-- /ko -->
-	<button type="button" data-bind="click: completeAllWords">clear all</button>
 </div>
-
+<hr />
+<div>
+	<div id="clear_all_button"
+	data-bind="click: completeAllWords">clear all</div>
+</div>
 </body>
 </html>
+<!--
+<button type="button" data-bind="click: completeAllWords">clear all</button>
+			transform: rotate(45deg) translate(16px, 16px);
+&#10004;
+			<img class="del_icon" src="icon-32.png"
+				data-bind="click: $root.completeWord"/>
+ -->
