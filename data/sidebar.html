@@ -31,6 +31,21 @@
 		var model = JSON.parse(data);
 		ViewModel.words(model);
 	});
+
+	addon.port.on("set-sort_type", function(data) {
+		var opts = document.querySelector("#sort_type").getElementsByTagName('option');
+		for(var i=0; i<opts.length; i++) {
+			if(opts[i].value == data) {
+				opts[i].selected = true;
+				break;
+			}
+		}
+	});
+
+	function changeSort(elem) {
+		var val = elem.options[elem.selectedIndex].value;
+		addon.port.emit("sortby", val);
+	}
 	</script>
 	<style>
 		img div {
@@ -124,7 +139,7 @@
 <div style="padding:3px;">
 	<div>
 	sort by&nbsp;
-	<select>
+	<select id="sort_type" onchange="changeSort(this);">
 		<option value="sort_date">date</option>
 		<option value="sort_dict">dictionary</option>
 	</select>
