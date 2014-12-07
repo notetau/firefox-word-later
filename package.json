@@ -5,6 +5,6 @@
   "description": "pick up words and list them later",
   "author": "notetau",
   "license": "MIT License",
-  "version": "0.1"
+  "version": "0.1",
   "homepage": "https://github.com/notetau/firefox-word-later"
 }
