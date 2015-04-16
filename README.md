@@ -1,4 +1,4 @@
-**pick up words and list them later**
+**Pick up words and list them later**
 
 This extension provides listing words. For example, you can pick up some keywords in an article when you read it. and later (after having finished reading it) you can check them.
 
